@@ -25,36 +25,53 @@ export default function Home(props) {
       </header>
 
       <main className={styles.name}>
-      <h1>{props.title}</h1>
-        <a href=""></a>
-        <img src="" alt="" />
-        <div>
-          <h1>Events in London</h1>
-          <p> dfgdg dfgd fgd dfgdgd dfgdgdf dfg dg dgdfg gdffgdgdg</p>
-        </div>
+        {props.data.map(item => <a href={`/event/${item.id}`}>
+          <Image src={item.image} width='300' height='300' alt='xxx'/>
+          <h2>{item.title}</h2>
+          <p>{item.description}</p>
+        </a>)}
 
-        <a href=""></a>
-        <img src="" alt="" />
-        <div>
-          <h1>Events in Sanantonio</h1>
-          <p> dfgdg dfgd fgd dfgdgd dfgdgdf dfg dg dgdfg gdffgdgdg</p>
-        </div>
+        <a href="/event/london">
+          <img src="" alt="" />
+          <div>
+            <h1>Events in London</h1>
+            <p> dfgdg dfgd fgd dfgdgd dfgdgdf dfg dg dgdfg gdffgdgdg</p>
+          </div>
+        </a>
 
-        <a href=""></a>
-        <img src="" alt="" />
-        <div>
-          <h1>Events in Austin</h1>
-          <p> dfgdg dfgd fgd dfgdgd dfgdgdf dfg dg dgdfg gdffgdgdg</p>
-        </div>
+
+        <a href="">
+
+          <div>
+            <img src="" alt="" />
+            <h1>Events in Sanantonio</h1>
+            <p> dfgdg dfgd fgd dfgdgd dfgdgdf dfg dg dgdfg gdffgdgdg</p>
+          </div>
+        </a>
+
+
+
+        <a href="">
+          <img src="" alt="" />
+          <div>
+            <h1>Events in Austin</h1>
+            <p> dfgdg dfgd fgd dfgdgd dfgdgdf dfg dg dgdfg gdffgdgdg</p>
+          </div>
+
+        </a>
+
       </main>
     </>
   )
 }
 
-export function getServerSideProps() {
+export async function getServerSideProps() {
+
+  const { events_categories } = await import('../data/data.json')
+
   return {
     props: {
-      title: 'hello'
+      data:  events_categories,
     }
   }
 }

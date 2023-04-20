@@ -1,6 +1,16 @@
-const Events = () => {
+import Image from 'next/image'
+
+const Events = ({ data }) => {
     return (
+
         <div>
+            {data.map((item) => (
+                <a href={`events/${item.id}`}>
+                    <Image src={item.image} width='300' height='300' alt='xxx' />
+                    <h2>{item.title}</h2>
+                </a>
+            ))}
+
             <h1>Events Page</h1>
             <a href=""></a>
             <img src="" alt="" />
@@ -26,3 +36,14 @@ const Events = () => {
 }
 
 export default Events
+
+
+export async function getServerSideProps() {
+    const { events_categories } = await import('../../data/data.json')
+
+    return {
+        props: {
+            data: events_categories
+        }
+    }
+}
