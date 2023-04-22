@@ -5,7 +5,6 @@ const EventsEachCity = ({ data, pageName }) => {
     return (
         <div>
             <h1>Event in {pageName}</h1>
-
             {data.map((item) => {
                 return (
                     <Link href={`/events/${item.city}/${item.id}`} key={item.id}>
@@ -13,7 +12,6 @@ const EventsEachCity = ({ data, pageName }) => {
                         <p>{item.description}</p>
                         <Image width={300} height={300} alt='sdfsf' src={item.image} />
                     </Link>
-
                 )
             })}
         </div>

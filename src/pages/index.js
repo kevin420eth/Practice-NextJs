@@ -18,10 +18,9 @@ export default function Home(props) {
 
       <header>
         <nav>
-          <img src="" alt="sss" />
-          <a href="/">Home</a>
-          <a href="/event">Events</a>
-          <a href="/about">About Us</a>
+        <Link href="/">Home</Link>
+        <Link href="/event">Event</Link>
+        <Link href="/about">About Us</Link>
         </nav>
       </header>
 
