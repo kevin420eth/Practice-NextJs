@@ -25,7 +25,8 @@ export default function Home(props) {
       </header>
 
       <main className={styles.name}>
-        {props.data.map(item => <a href={`/event/${item.id}`}>
+        {props.data.map(item => 
+        <a href={`/event/${item.id}`} key={item.id}>
           <Image src={item.image} width='300' height='300' alt='xxx'/>
           <h2>{item.title}</h2>
           <p>{item.description}</p>
