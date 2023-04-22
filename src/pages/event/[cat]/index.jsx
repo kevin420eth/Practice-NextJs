@@ -7,7 +7,7 @@ const EventsEachCity = ({ data, pageName }) => {
             <h1>Event in {pageName}</h1>
             {data.map((item) => {
                 return (
-                    <Link href={`/events/${item.city}/${item.id}`} key={item.id}>
+                    <Link href={`/event/${item.city}/${item.id}`} key={item.id}>
                         <h2>{item.title}</h2>
                         <p>{item.description}</p>
                         <Image width={300} height={300} alt='sdfsf' src={item.image} />
