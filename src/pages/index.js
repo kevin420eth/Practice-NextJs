@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 
@@ -25,42 +26,15 @@ export default function Home(props) {
       </header>
 
       <main className={styles.name}>
-        {props.data.map(item => 
-        <a href={`/event/${item.id}`} key={item.id}>
-          <Image src={item.image} width='300' height='300' alt='xxx'/>
-          <h2>{item.title}</h2>
-          <p>{item.description}</p>
-        </a>)}
-
-        <a href="/event/london">
-          <img src="" alt="" />
-          <div>
-            <h1>Events in London</h1>
-            <p> dfgdg dfgd fgd dfgdgd dfgdgdf dfg dg dgdfg gdffgdgdg</p>
-          </div>
-        </a>
-
-
-        <a href="">
-
-          <div>
-            <img src="" alt="" />
-            <h1>Events in Sanantonio</h1>
-            <p> dfgdg dfgd fgd dfgdgd dfgdgdf dfg dg dgdfg gdffgdgdg</p>
-          </div>
-        </a>
-
-
-
-        <a href="">
-          <img src="" alt="" />
-          <div>
-            <h1>Events in Austin</h1>
-            <p> dfgdg dfgd fgd dfgdgd dfgdgdf dfg dg dgdfg gdffgdgdg</p>
-          </div>
-
-        </a>
-
+        {props.data.map((item) => {
+          return (
+            <Link href={`/event/${item.id}`} key={item.id}>
+              <h2>{item.title}</h2>
+              <p>{item.description}</p>
+              <Image src={item.image} width='300' height='300' alt='xxx' />
+            </Link>
+          )
+        })}
       </main>
     </>
   )
@@ -72,7 +46,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      data:  events_categories,
+      data: events_categories,
     }
   }
 }
